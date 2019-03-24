@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "stretch",
+      "backgroundColor": "#444A5A",
+      "flex": 1,
+      "justifyContent": "center",
+      "padding": 40,
+    }
+  }
+>
+  <StatusBar
+    animated={false}
+    barStyle="light-content"
+    showHideTransition="fade"
+  />
+  <Text
+    style={
+      Object {
+        "color": "#FFF",
+        "fontSize": 24,
+        "fontWeight": "bold",
+        "textAlign": "center",
+      }
+    }
+  >
+    Bem-vindo
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#DDD",
+        "fontSize": 14,
+        "lineHeight": 21,
+        "marginTop": 10,
+        "textAlign": "center",
+      }
+    }
+  >
+    Para continuar, precisamos que você informe seu usuário
+  </Text>
+  <View
+    style={
+      Object {
+        "marginTop": 20,
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      autoCapitalize="none"
+      autoCorrect={false}
+      onChangeText={[Function]}
+      placeholder="Digite seu usuário"
+      style={
+        Object {
+          "backgroundColor": "#FFF",
+          "borderRadius": 3,
+          "height": 44,
+          "paddingHorizontal": 20,
+        }
+      }
+      underlineColorAndroid="rgba(0, 0, 0, 0)"
+      value=""
+    />
+    <TouchableOpacity
+      activeOpacity={0.2}
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#7A91CA",
+          "borderRadius": 3,
+          "height": 44,
+          "justifyContent": "center",
+          "marginTop": 10,
+          "paddingHorizontal": 20,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#FFF",
+            "fontSize": 14,
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Prosseguir
+      </Text>
+    </TouchableOpacity>
+  </View>
+</View>
+`;
