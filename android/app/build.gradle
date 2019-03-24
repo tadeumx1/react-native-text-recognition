@@ -101,10 +101,16 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+     packagingOptions {
+      exclude 'META-INF/androidx.exifinterface_exifinterface.version'
+      exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+
     defaultConfig {
         applicationId "com.firebasetext"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        missingDimensionStrategy 'react-native-camera', 'general'
         versionCode 1
         versionName "1.0"
     }
@@ -138,6 +144,11 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-ml-vision:17.0.0'  
+    implementation (project(':react-native-firebase-mlkit')) {
+        exclude group: 'com.google.firebase'
+    }
     implementation project(':react-native-camera')
     implementation project(':react-native-gesture-handler')
     implementation project(':react-native-vector-icons')
@@ -152,3 +163,8 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'
+
+// Work around for onesignal-gradle-plugin compatibility
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

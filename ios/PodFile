@@ -1,0 +1,4 @@
+pod 'Firebase/Core'
+pod 'Firebase/MLVision'
+pod 'Firebase/MLVisionTextModel'
+pod 'Firebase/MLVisionBarcodeModel'
