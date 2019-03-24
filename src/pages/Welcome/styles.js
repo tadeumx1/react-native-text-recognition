@@ -1,80 +1,65 @@
-import { StyleSheet } from 'react-native';
-import { colors, metrics } from '../../styles';
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create ({
+export const Container = styled.View`
+    display: flex;
+    flex: 1;
+    background-color: #444A5A;
+    padding: 40px;
+    justify-content: center;
+    align-items: stretch;
+`;
 
-    container: {
+export const Title = styled.Text`
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: bold;
+`;
 
-        flex: 1,
-        backgroundColor: colors.secondary,
-        padding: metrics.basePadding * 2,
-        justifyContent: 'center',
-        alignItems: 'stretch',
+export const TextInformation = styled.Text`
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #DDDDDD;
+    line-height: 21px;
+`;
 
-    },
+export const Error = styled.Text`
+    color: #E37A7A;
+    text-align: center;
+    margin-top: 10px;
+`;
 
-    title: {
+export const Form = styled.View`
+    margin-top: 20px;
+`;
 
-        textAlign: 'center',
-        color: colors.white,
-        fontSize: 24,
-        fontWeight: 'bold',
+export const Input = styled.TextInput`
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    height: 44px;
+    /*
+    
+        top and bottom paddings are 0px
+        right and left paddings are 20px
+    */
+    /* paddingHorizontal: metrics.basePadding */
+    /* paddingHorizontal: 20 */
+    padding: 0px 20px;
+`;
 
-    },
+export const Button = styled.TouchableOpacity`
+    background-color: #7A91CA;
+    border-radius: 3px;
+    height: 44px;
+    padding: 0px 20px;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+`;
 
-    text: {
-
-        textAlign: 'center',
-        marginTop: metrics.baseMargin,
-        fontSize: 14,
-        color: colors.light,
-        lineHeight: 21,
-
-    },
-
-    error: {
-
-        color: colors.danger,
-        textAlign: 'center',
-        marginTop: metrics.baseMargin,
-
-    },
-
-    form: {
-
-        marginTop: metrics.baseMargin * 2,
-
-    },
-
-    input: {
-
-        backgroundColor: colors.white,
-        borderRadius: metrics.baseRadius,
-        height: 44,
-        paddingHorizontal: metrics.basePadding
-
-    },
-
-    button: {
-
-        backgroundColor: colors.primary,
-        borderRadius: metrics.baseRadius,
-        height: 44,
-        paddingHorizontal: metrics.basePadding,
-        marginTop: metrics.baseMargin,
-        justifyContent: 'center',
-        alignItems: 'center',
-
-    },
-
-    buttonText: {
-
-        color: colors.white,
-        fontWeight: 'bold',
-        fontSize: 14,
-
-    }
-
-});
-
-export default styles
+export const ButtonText = styled.Text`
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 14px;
+`;

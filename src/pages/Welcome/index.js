@@ -2,19 +2,9 @@ import React, { Component } from 'react';
 import { StackActions, NavigationActions } from 'react-navigation';
 import PropTypes from 'prop-types';
 
-import { 
+import { StatusBar, ActivityIndicator, AsyncStorage } from 'react-native';
 
-    View, 
-    Text, 
-    TextInput, 
-    TouchableOpacity,
-    StatusBar,
-    ActivityIndicator,
-    AsyncStorage    
-
-} from 'react-native';
-
-import styles from './styles';
+import { Container, Title, TextInformation, Error, Form, Input, Button, ButtonText} from './styles'
 
 export default class Welcome extends Component {
 
@@ -89,25 +79,24 @@ export default class Welcome extends Component {
     render() {
       return (
 
-        <View style={styles.container}>
+        <Container>
 
             <StatusBar barStyle="light-content" /> 
 
-            <Text style={styles.title}>Bem-vindo</Text>
-            <Text style={styles.text}>
+            <Title>Bem-vindo</Title>
+            <TextInformation>
         
                 Para continuar, precisamos que você informe seu usuário
         
-            </Text>
+            </TextInformation>
 
             { !!this.state.errorMessage 
-                && <Text style={styles.error}>{this.state.errorMessage}</Text> }
+                && <Error>{this.state.errorMessage}</Error> }
 
-            <View style={styles.form}>
+            <Form>
 
-                <TextInput
+                <Input
 
-                    style={styles.input}
                     autoCapitalize="none"
                     autoCorrect={false}
                     placeholder="Digite seu usuário"
@@ -117,17 +106,18 @@ export default class Welcome extends Component {
 
                 />
 
-                <TouchableOpacity style={styles.button} onPress={this.signIn}>
+                <Button onPress={this.signIn}>
 
                     { this.state.loading
                     ? <ActivityIndicator size="small" color='#FFF' />
-                    : <Text style={styles.buttonText}>Prosseguir</Text> }
+                    : <ButtonText>Prosseguir</ButtonText> }
 
-                </TouchableOpacity>
+                </Button>
 
-            </View>
+            </Form>
 
-        </View>
+        </Container>
+
       )
     }
 };
