@@ -8,16 +8,28 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "jsdom": "^14.0.0",
+    "prop-types": "^15.7.2",
     "react": "16.8.3",
-    "react-native": "0.59.1"
+    "react-native": "0.59.1",
+    "react-native-camera": "^2.0.2",
+    "react-native-firebase-mlkit": "^0.6.2",
+    "react-native-gesture-handler": "^1.1.0",
+    "react-native-vector-icons": "^6.4.2",
+    "react-navigation": "^3.5.1",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/runtime": "^7.4.2",
     "@react-native-community/eslint-config": "^0.0.3",
     "babel-jest": "^24.5.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-react-16-adapter-setup": "^0.1.0",
     "eslint": "^5.15.3",
     "jest": "^24.5.0",
+    "jest-enzyme": "^7.0.2",
     "metro-react-native-babel-preset": "^0.53.1",
     "react-test-renderer": "16.8.3"
   },
