@@ -49,7 +49,7 @@ export default class Welcome extends Component {
 
     saveUser = async (username) => {
 
-        await AsyncStorage.setItem('@AplicativoQRCode:username', username)
+        await AsyncStorage.setItem('@FirebaseText:username', username)
 
     }
 
@@ -70,7 +70,7 @@ export default class Welcome extends Component {
                 index: 0,
                 actions: [
     
-                    NavigationActions.navigate({ routeName: 'QRCodeScreen' }),
+                    NavigationActions.navigate({ routeName: 'Main' }),
     
                 ]
     
