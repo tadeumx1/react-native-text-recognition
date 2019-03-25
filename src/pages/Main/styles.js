@@ -4,7 +4,6 @@ import { RNCamera } from 'react-native-camera';
 
 export const Container = styled.View`
 
-    display: flex;
     flex: 1;
     flex-direction: column;
     background-color: #000;
@@ -13,30 +12,21 @@ export const Container = styled.View`
 
 export const RNCameraPreview = styled(RNCamera)`
 
-    display: flex;
     flex: 1;
     justify-content: flex-end;
     align-items: center;
 
 `;
 
-export const ButtonContainer = styled.View`
-
-    display: flex;
-    flex: 0;
-    flex-direction: row;
-    justify-content: center;
-
-`;
-
 export const ButtonCapture = styled.TouchableOpacity`
 
-    flex: 0;
+    flex: 1;
     background-color: #fff;
     border-radius: 5px;
-    padding: 15px;
+    padding: 2px;
     padding-right: 20px;
     padding-left: 20px;
+    justify-content: center;
     align-self: center;
     margin: 20px;
 

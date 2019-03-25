@@ -26,31 +26,31 @@ export default class Main extends Component {
 
     takePicture = async () => {
 
-            const options = { quality: 0.5, base64: true, skipProcessing: true, forceUpOrientation: true };
+            const options = { base64: true, skipProcessing: true, forceUpOrientation: true };
             const data = await this.camera.takePictureAsync(options);
 
-            // alert('data' + data.uri)
-
             // for on-device (Supports Android and iOS)
+
             const deviceTextRecognition = await RNMlKit.deviceTextRecognition(data.uri); 
             console.log('Text Recognition On-Device', deviceTextRecognition);
 
             alert('Texto identificado ' + JSON.stringify(deviceTextRecognition))
 
             // for cloud (At the moment supports only Android)
+
             // const cloudTextRecognition = await RNMlKit.cloudTextRecognition(data.uri);
             // console.log('Text Recognition Cloud', cloudTextRecognition);
+
     };
 
     render() {
       return (
 
-        <View style={styles.container}>
-        <RNCamera
+        <Container>
+        <RNCameraPreview
           ref={camera => {
             this.camera = camera;
           }}
-          style={styles.preview}
           type={RNCamera.Constants.Type.back}
           autoFocus={RNCamera.Constants.AutoFocus.on}
           flashMode={RNCamera.Constants.FlashMode.off}
@@ -62,10 +62,10 @@ export default class Main extends Component {
         />
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={this.takePicture} style={styles.capture}>
-            <Text style={styles.buttonText}> SNAP </Text>
+            <ButtonText> SNAP </ButtonText>
           </TouchableOpacity>
         </View>
-      </View>
+      </Container>
 
       )
     }

@@ -144,8 +144,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.firebase:firebase-core:16.0.1'
-    implementation 'com.google.firebase:firebase-ml-vision:17.0.0'  
+    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.google.firebase:firebase-ml-vision:19.0.2'
     implementation (project(':react-native-firebase-mlkit')) {
         exclude group: 'com.google.firebase'
     }
