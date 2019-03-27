@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Modal, TouchableOpacity } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 
 import RNMlKit from 'react-native-firebase-mlkit';
@@ -12,45 +12,64 @@ export default class Main extends Component {
 
     static navigationOptions = {
 
-        header: null,
+      header: null,
     
     };
     
     state = {
 
-        text: '',
-        loading: false,
-        error: null,
+      text: '',
+      modalVisible: false,
+      loading: false,
+      error: null,
         
     }
 
     takePicture = async () => {
 
-            const options = { base64: true, skipProcessing: true, forceUpOrientation: true };
-            const data = await this.camera.takePictureAsync(options);
+      const options = { quality: 0.8, base64: true, skipProcessing: true, forceUpOrientation: true };
+      const data = await this.camera.takePictureAsync(options);
 
-            // for on-device (Supports Android and iOS)
+      // for on-device (Supports Android and iOS)
 
-            const deviceTextRecognition = await RNMlKit.deviceTextRecognition(data.uri); 
-            console.log('Text Recognition On-Device', deviceTextRecognition);
+      const deviceTextRecognition = await RNMlKit.deviceTextRecognition(data.uri); 
+      console.log('Text Recognition On-Device', deviceTextRecognition);
 
-            alert('Texto identificado ' + JSON.stringify(deviceTextRecognition))
+      alert('Texto identificado ' + JSON.stringify(deviceTextRecognition))
 
-            // for cloud (At the moment supports only Android)
+      // for cloud (At the moment supports only Android)
 
-            // const cloudTextRecognition = await RNMlKit.cloudTextRecognition(data.uri);
-            // console.log('Text Recognition Cloud', cloudTextRecognition);
+      // const cloudTextRecognition = await RNMlKit.cloudTextRecognition(data.uri);
+      // console.log('Text Recognition Cloud', cloudTextRecognition);
 
     };
+
+    renderModal = () => {
+
+      const { modalVisible } = this.state
+
+      return (
+
+        <Modal visible={modalVisible}>
+          <View>
+
+          </View>
+        </Modal>
+
+      )
+
+    }
 
     render() {
       return (
 
-        <Container>
-        <RNCameraPreview
+        <View style={styles.container}>
+        {this.renderModal()}
+        <RNCamera
           ref={camera => {
             this.camera = camera;
           }}
+          style = {styles.preview}
           type={RNCamera.Constants.Type.back}
           autoFocus={RNCamera.Constants.AutoFocus.on}
           flashMode={RNCamera.Constants.FlashMode.off}
@@ -65,7 +84,7 @@ export default class Main extends Component {
             <ButtonText> SNAP </ButtonText>
           </TouchableOpacity>
         </View>
-      </Container>
+      </View>
 
       )
     }
