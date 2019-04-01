@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { View, Text, StyleSheet, Modal, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Modal, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 
 import RNMlKit from 'react-native-firebase-mlkit';
 
-import { Container, ButtonContainer, ButtonCapture, ButtonText, RNCameraPreview } from './styles'
+import uuidv1 from 'uuid/v1';
+
+const { height, width } = Dimensions.get('window')
+
+// import { Container, ButtonContainer, ButtonCapture, ButtonText, RNCameraPreview } from './styles'
 
 export default class Main extends Component {
 
@@ -18,7 +22,7 @@ export default class Main extends Component {
     
     state = {
 
-      text: '',
+      text: [],
       modalVisible: false,
       loading: false,
       error: null,
@@ -35,7 +39,9 @@ export default class Main extends Component {
       const deviceTextRecognition = await RNMlKit.deviceTextRecognition(data.uri); 
       console.log('Text Recognition On-Device', deviceTextRecognition);
 
-      alert('Texto identificado ' + JSON.stringify(deviceTextRecognition))
+      this.setState({ text: deviceTextRecognition, modalVisible: true })
+
+      // alert('Texto identificado ' + JSON.stringify(deviceTextRecognition))
 
       // for cloud (At the moment supports only Android)
 
@@ -44,15 +50,37 @@ export default class Main extends Component {
 
     };
 
+    handleCancel = () => {
+
+      this.setState({ modalVisible: false })
+
+    }
+
     renderModal = () => {
 
-      const { modalVisible } = this.state
+      const { modalVisible, text } = this.state
 
       return (
 
-        <Modal visible={modalVisible}>
-          <View>
+        <Modal animationType="slide" transparent={false} visible={modalVisible}>
+          <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+            <View style={{ width: width - 50, height: height - 70 }}>
+              <ScrollView>
+                {text.map(blockVision => (
 
+                  <View key={uuidv1()}>
+                    <Text>Element Text : {blockVision.elementText}</Text>
+                    <Text>Line Text : {blockVision.lineText}</Text>
+                    <Text>Result Text : {blockVision.resultText}</Text>
+                    <Text>Block Text : {blockVision.blockText}</Text>
+                  </View>
+
+                ))}
+              </ScrollView>
+            </View>
+            <TouchableOpacity onPress={this.handleCancel}>
+              <Text>Fechar</Text>
+            </TouchableOpacity>
           </View>
         </Modal>
 
@@ -64,7 +92,6 @@ export default class Main extends Component {
       return (
 
         <View style={styles.container}>
-        {this.renderModal()}
         <RNCamera
           ref={camera => {
             this.camera = camera;
@@ -79,9 +106,10 @@ export default class Main extends Component {
             "We need your permission to use your camera phone"
           }
         />
+        {this.renderModal()}
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={this.takePicture} style={styles.capture}>
-            <ButtonText> SNAP </ButtonText>
+            <Text style={styles.buttonText}> SNAP </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -111,4 +139,12 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       margin: 20,
     },
+    buttonText: {
+      fontSize: 14,
+    },
+    modalView: {
+      backgroundColor: '#FFF',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
   });
