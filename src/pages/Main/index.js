@@ -24,8 +24,8 @@ export default class Main extends Component {
 
       text: [],
       modalVisible: false,
-      loading: false,
-      error: null,
+      // loading: false,
+      // error: null,
         
     }
 
@@ -68,7 +68,7 @@ export default class Main extends Component {
               <ScrollView>
                 {text.map(blockVision => (
 
-                  <View key={uuidv1()}>
+                  <View style={styles.textContainer} key={uuidv1()}>
                     <Text>Element Text : {blockVision.elementText}</Text>
                     <Text>Line Text : {blockVision.lineText}</Text>
                     <Text>Result Text : {blockVision.resultText}</Text>
@@ -119,6 +119,12 @@ export default class Main extends Component {
     
 };
 
+Main.PropTypes = {
+
+  navigation: PropTypes.object
+
+}
+
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -141,6 +147,9 @@ const styles = StyleSheet.create({
     },
     buttonText: {
       fontSize: 14,
+    },
+    textContainer: {
+      marginBottom: 10,
     },
     modalView: {
       backgroundColor: '#FFF',
