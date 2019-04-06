@@ -71,12 +71,11 @@
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
 	</array>
+
+	<key>NSCameraUsageDescription</key> 
+	<string>Your message to user when the camera is accessed for the first time</string> 
+	<key>NSPhotoLibraryUsageDescription</key> 
+	<string>Your message to user when the photo library is accessed for the first time</string>
+
 </dict>
-
-<key>NSCameraUsageDescription</key>
-<string>Your message to user when the camera is accessed for the first time</string>
-
-<key>NSPhotoLibraryUsageDescription</key>
-<string>Your message to user when the photo library is accessed for the first time</string>
-
 </plist>

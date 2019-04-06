@@ -10,6 +10,10 @@ target 'FirebaseText' do
   pod 'Firebase/MLVisionTextModel'
   pod 'Firebase/MLVisionBarcodeModel'
 
+  pod 'react-native-camera', path: '../node_modules/react-native-camera', subspecs: [
+  'TextDetector'
+  ]
+
   # Pods for FirebaseText
 
   target 'FirebaseTextTests' do
