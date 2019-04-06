@@ -10,8 +10,6 @@ import uuidv1 from 'uuid/v1';
 
 const { height, width } = Dimensions.get('window')
 
-// import { Container, ButtonContainer, ButtonCapture, ButtonText, RNCameraPreview } from './styles'
-
 export default class Main extends Component {
 
     static navigationOptions = {
@@ -119,7 +117,7 @@ export default class Main extends Component {
     
 };
 
-Main.PropTypes = {
+Main.propTypes = {
 
   navigation: PropTypes.object
 
@@ -149,7 +147,7 @@ const styles = StyleSheet.create({
       fontSize: 14,
     },
     textContainer: {
-      marginBottom: 10,
+      marginBottom: 30,
     },
     modalView: {
       backgroundColor: '#FFF',
