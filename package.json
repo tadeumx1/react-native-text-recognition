@@ -8,7 +8,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "jsdom": "^14.0.0",
+    "jsdom": "^16.5.0",
     "prop-types": "^15.7.2",
     "react": "16.8.3",
     "react-native": "0.59.3",
